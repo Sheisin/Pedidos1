@@ -90,6 +90,25 @@ curl -X PATCH http://localhost:8000/pedidos/1/status \
   -d '{ "status": "CONFIRMADO" }'
 ```
 
+## Documentação interativa (Swagger)
+
+A API expõe documentação interativa via Swagger UI, gerada automaticamente pelo springdoc-openapi a partir dos controllers.
+
+Após subir a aplicação com `docker compose up -d --build`, acesse:
+
+| Recurso | URL |
+|---|---|
+| **Swagger UI** (interface interativa) | http://localhost:8000/swagger-ui/index.html |
+| **OpenAPI JSON** (especificação bruta) | http://localhost:8000/v3/api-docs |
+
+### Como testar os endpoints pelo Swagger
+
+1. Abra http://localhost:8000/swagger-ui/index.html no navegador.
+2. Expanda o endpoint desejado (ex: `POST /pedidos`).
+3. Clique em **Try it out**.
+4. Preencha o corpo da requisição (um exemplo já vem pré-preenchido) e clique em **Execute**.
+5. A resposta (status HTTP, corpo, headers) aparece logo abaixo, junto com o comando `curl` equivalente.
+
 ## Tecnologias
 
 - Java 17
