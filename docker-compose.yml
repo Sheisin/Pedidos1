@@ -1,0 +1,41 @@
+services:
+  pedidos:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pedidos
+    ports:
+      - "8000:8000"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-pedidos}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-pedidos}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-pedidos}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - pedidos-net
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-pedidos}
+      POSTGRES_USER: ${POSTGRES_USER:-pedidos}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-pedidos}
+    volumes:
+      - pedidos-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-pedidos} -d ${POSTGRES_DB:-pedidos}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - pedidos-net
+
+networks:
+  pedidos-net:
+    driver: bridge
+
+volumes:
+  pedidos-db-data:

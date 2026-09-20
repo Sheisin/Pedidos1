@@ -1,0 +1,26 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: pedidos1-api
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/pedidos}
+    username: ${SPRING_DATASOURCE_USERNAME:pedidos}
+    password: ${SPRING_DATASOURCE_PASSWORD:pedidos}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      # cria/atualiza o schema automaticamente; adequado para a atividade da disciplina
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+
+logging:
+  level:
+    unip.api.pedidos1: INFO
