@@ -9,6 +9,7 @@ Projeto incremental: **API de Pedidos**
 - Nome: Guilherme Dias da Silva; RA: G863DJ0
 - Nome: Isabella Victorino dos Santos; RA: N094419
 - Nome: Guilherme Rodrigues de Freitas; RA: G804767
+- Nome: Victor de Goes Galasso; RA: G80AAJ0
 
 ## Arquitetura
 
