@@ -10,8 +10,6 @@ Projeto incremental: **API de Pedidos**
 - Nome: Isabella Victorino dos Santos; RA: N094419
 - Nome: Guilherme Rodrigues de Freitas; RA: G804767
 
-> *(substituir pelos nomes e RAs reais do grupo antes da entrega)*
-
 ## Arquitetura
 
 - **Cliente → API de Pedidos → PostgreSQL**

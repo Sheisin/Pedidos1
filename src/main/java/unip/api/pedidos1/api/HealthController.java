@@ -7,7 +7,7 @@ import java.util.Map;
 
 /**
  * Endpoint de saúde. Não representa uma funcionalidade de negócio;
- * será utilizado posteriormente para disponibilidade, balanceamento
+ * pode ser utilizado posteriormente para disponibilidade, balanceamento
  * e monitoramento.
  */
 @RestController

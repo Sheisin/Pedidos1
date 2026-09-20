@@ -37,7 +37,7 @@ public class PedidoController {
         return ResponseEntity.ok(pedidoService.consultarPedido(id));
     }
 
-    // GET /pedidos -> lista de pedidos, sem paginação nesta versão
+    // GET /pedidos -> lista de pedidos
     @GetMapping
     public ResponseEntity<List<PedidoResponse>> listarPedidos() {
         return ResponseEntity.ok(pedidoService.listarPedidos());

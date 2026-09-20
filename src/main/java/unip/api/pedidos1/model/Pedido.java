@@ -8,9 +8,6 @@ import java.time.LocalDateTime;
 
 /**
  * Modelo de Pedido, persistido no PostgreSQL.
- *
- * Campos conforme especificação:
- * id, cliente, produto, quantidade, valor_unitario, valor_total, status, data_criacao
  */
 @Entity
 @Table(name = "pedidos")
