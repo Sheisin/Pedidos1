@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import unip.api.pedidos1.dto.PedidoRequest;
 import unip.api.pedidos1.dto.PedidoResponse;
 import unip.api.pedidos1.exception.PedidoNotFoundException;
+import unip.api.pedidos1.exception.StatusInvalidoException;
 import unip.api.pedidos1.model.Pedido;
 import unip.api.pedidos1.model.StatusPedido;
 import unip.api.pedidos1.repository.PedidoRepository;
@@ -58,12 +59,26 @@ public class PedidoService {
     }
 
     @Transactional
-    public PedidoResponse atualizarStatus(Long id, StatusPedido novoStatus) {
+    public PedidoResponse atualizarStatus(Long id, String statusTexto) {
         Pedido pedido = pedidoRepository.findById(id)
                 .orElseThrow(() -> new PedidoNotFoundException(id));
 
+        StatusPedido novoStatus = converterStatus(statusTexto);
+
         pedido.setStatus(novoStatus);
         Pedido atualizado = pedidoRepository.save(pedido);
+
         return PedidoResponse.fromEntity(atualizado);
+    }
+
+    private StatusPedido converterStatus(String statusPedido){
+        String format = statusPedido.trim().toUpperCase();
+
+        for (StatusPedido status : StatusPedido.values()){
+            if(status.name().equals(format)){
+                return status;
+            }
+        }
+        throw new StatusInvalidoException(statusPedido);
     }
 }

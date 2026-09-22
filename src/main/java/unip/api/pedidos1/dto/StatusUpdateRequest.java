@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import unip.api.pedidos1.model.StatusPedido;
 
 /**
  * Corpo de entrada esperado por PATCH /pedidos/{id}/status.
@@ -17,5 +16,5 @@ import unip.api.pedidos1.model.StatusPedido;
 public class StatusUpdateRequest {
 
     @NotNull(message = "status é obrigatório")
-    private StatusPedido status;
+    private String status;
 }
